@@ -1,4 +1,5 @@
-import { LoginForm } from "../organisms/auth/LoginForm"
+import { LoginForm } from "@/ui/organisms/auth/LoginForm"
+
 
 
 export const LoginTemplate = () => {

@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { FormField } from "../../molecules";
-import { ILoginRequest } from "@/app/(main)/core/application/dto/login-request.dto";
+import { ILoginRequest } from "@/app/(main)/core/application/dto/auth/login-request.dto";
 
 const loginSchema = yup.object().shape({
   userName: yup
