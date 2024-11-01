@@ -1,4 +1,4 @@
-const defaultBaseUrl = "https://vacantsbackendgates-production.up.railway.app/api/v1"
+const defaultBaseUrl = "https://beautysalongates-production.up.railway.app/api/v1"
 
 export class HttpClient {
   private baseUrl : string;
@@ -8,8 +8,10 @@ export class HttpClient {
   }
 
   private async getHeader() {
+    //si esta autenticado 
     return {
       "Content-Type": "application/json",
+      //autorización  :  "beararer token"
     }
   }
 

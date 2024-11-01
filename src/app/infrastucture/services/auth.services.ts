@@ -1,6 +1,6 @@
-import { ILoginRequest, ILoginResponse } from "@/app/core/application/dto";
-import { PAuth } from "@/app/core/application/ports";
-import { HttpClient } from "@/app/infrastructure/utils";
+import { ILoginRequest, ILoginResponse } from "@/app/(main)/core/application/dto";
+import { HttpClient } from "../utils";
+import { PAuth } from "@/app/(main)/core/application/ports/auth.port";
 
 export class AuthService  implements PAuth {
     private clientHttp : HttpClient;
