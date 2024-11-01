@@ -1,11 +1,11 @@
-'use client'
-
+"use client";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { FormField } from "../../molecules";
+
 import { ILoginRequest } from "@/app/(main)/core/application/dto/auth/login-request.dto";
+import { FormField } from "@/ui/molecules";
 
 const loginSchema = yup.object().shape({
   userName: yup
@@ -42,7 +42,7 @@ export const LoginForm = () => {
         error={errors.userName}
         placeholder="Ingresa tu correo"
       />
-      
+
       <FormField<ILoginRequest>
         control={control}
         type="password"
@@ -51,7 +51,10 @@ export const LoginForm = () => {
         error={errors.password}
         placeholder="Ingresa tu contraseña"
       />
-      <button type="submit" className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600">
+      <button
+        type="submit"
+        className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600"
+      >
         Iniciar Sesión
       </button>
     </form>
