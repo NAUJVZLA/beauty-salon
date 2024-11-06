@@ -6,6 +6,8 @@ import * as yup from "yup";
 
 import { ILoginRequest } from "@/app/(main)/core/application/dto/auth/login-request.dto";
 import { FormField } from "@/ui/molecules";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const loginSchema = yup.object().shape({
   userName: yup
@@ -19,6 +21,7 @@ const loginSchema = yup.object().shape({
 });
 
 export const LoginForm = () => {
+  const router = useRouter();
   const {
     control,
     handleSubmit,
@@ -29,9 +32,34 @@ export const LoginForm = () => {
     reValidateMode: "onChange",
     resolver: yupResolver(loginSchema),
   });
+  const handleLogin = async (data: ILoginRequest) => {
+    console.log(data);
+    //SERVICE LOGIN
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        username: data.userName,
+        password: data.password,
+      });
+
+      console.log(result);
+
+      if (result?.error) {
+        console.log("Ocurrio un error", JSON.parse(result.error));
+        handleError(JSON.parse(result.error));
+        return;
+      }
+      router.push("/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <form className="w-full max-w-sm mx-auto p-4 space-y-4">
+    <form
+      className="w-full max-w-sm mx-auto p-4 space-y-4"
+      onSubmit={handleSubmit(handleLogin)}
+    >
       <h2 className="text-2xl font-semibold  text-center">Iniciar Sesión</h2>
 
       <FormField<ILoginRequest>
@@ -60,3 +88,6 @@ export const LoginForm = () => {
     </form>
   );
 };
+function handleError(arg0: any) {
+  throw new Error("Function not implemented.");
+}
