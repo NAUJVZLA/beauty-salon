@@ -10,20 +10,19 @@ import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import PersistentDrawerLeft from "@/ui/template/navbar/button";
+import ButtonOpenMenuNav from "@/ui/template/navbar/button";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  backgroundColor: alpha(theme.palette.common.white, 0.15), // color de hover inicial del search
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: alpha(theme.palette.common.white, 0.25), // color de hover del seach luego de pasar el cursor
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
@@ -35,6 +34,7 @@ const Search = styled("div")(({ theme }) => ({
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
+  // icono de buscador
   padding: theme.spacing(0, 2),
   height: "100%",
   position: "absolute",
@@ -45,6 +45,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  // color de input theme para poder poner color a lo que se mete en el buscador
   color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
@@ -160,9 +161,10 @@ export default function PrimarySearchAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
+        {/*  toobar es el contenedor de el header  */}
+        <Toolbar className="bg-[#111827]">
           {/* trayendo con este boton el menu desplegable */}
-          <PersistentDrawerLeft />
+          <ButtonOpenMenuNav />
           <Typography
             variant="h6"
             noWrap

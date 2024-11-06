@@ -9,7 +9,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
   console.log(data, status);
   useEffect(() => {
     if (status === "unauthenticated") {
-      router.push("/login");
+      router.push("/"); // redirecciona a la pagina principal por datos errados
     }
   }, [status, router]);
 

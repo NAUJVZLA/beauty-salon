@@ -3,10 +3,8 @@ import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -16,11 +14,47 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import ElectricalServicesIcon from "@mui/icons-material/ElectricalServices";
+import ScissorsIcon from "@mui/icons-material/ContentCut";
+import Face2Icon from "@mui/icons-material/Face2";
+import AirlineSeatReclineNormalIcon from "@mui/icons-material/AirlineSeatReclineNormal";
+import EmojiEmotionsSharpIcon from "@mui/icons-material/EmojiEmotionsSharp";
+import ColorLensSharpIcon from "@mui/icons-material/ColorLensSharp";
+import { useRouter } from "next/navigation";
 
 const drawerWidth = 240;
+
+const MenuNavH = [
+  { text: "Cortes de Cabello", icon: <ScissorsIcon />, route: "/services/cortes-cabello" },
+  {
+    text: "Arreglo de Barba",
+    icon: <EmojiEmotionsSharpIcon />,
+    route: "/services/barberia",
+  },
+  {
+    text: "Servicios de Afeitado",
+    icon: <ElectricalServicesIcon />,
+    route: "/services/afeitado",
+  },
+];
+
+const MenuNavM = [
+  {
+    text: "Tratamientos para el Cabello",
+    icon: <Face2Icon />,
+    route: "/services/tratamiento-cabellos",
+  },
+  {
+    text: "Coloración y Decoloración",
+    icon: <ColorLensSharpIcon />,
+    route: "/services/decoracion-color",
+  },
+  {
+    text: "Manicure y Pedicure",
+    icon: <AirlineSeatReclineNormalIcon />,
+    route: "/services/pedicure",
+  },
+];
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
   open?: boolean;
@@ -46,21 +80,17 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
   ],
 }));
 
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
-
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
-
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
 }));
 
-export default function PersistentDrawerLeft() {
+export default function ButtonOpenMenuNav() {
   const theme = useTheme();
+  const router = useRouter();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -69,6 +99,11 @@ export default function PersistentDrawerLeft() {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleNavigation = (route: string) => {
+    router.push(route); // Redirige a la ruta especificada
+    setOpen(false); // Cierra el menú después de la redirección
   };
 
   return (
@@ -115,27 +150,26 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
 
         <Divider />
+
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
+          {MenuNavH.map((item) => (
+            <ListItem key={item.text} disablePadding>
+              <ListItemButton onClick={() => handleNavigation(item.route)}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
+
         <Divider />
+
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
+          {MenuNavM.map((item) => (
+            <ListItem key={item.text} disablePadding>
+              <ListItemButton onClick={() => handleNavigation(item.route)}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
               </ListItemButton>
             </ListItem>
           ))}
