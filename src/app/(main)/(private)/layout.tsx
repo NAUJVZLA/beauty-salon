@@ -13,7 +13,7 @@ export default function PrivateLayout({
       <AuthGuard>
         <PrimarySearchAppBar />
         {children}
-        <ToastContainer />
+        {/* <ToastContainer /> */}
       </AuthGuard>
     </div>
   );

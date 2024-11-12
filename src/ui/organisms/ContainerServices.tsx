@@ -4,7 +4,8 @@ import CardS from "../molecules/common/Card/CardS";
 import { useState } from "react";
 import { PostServiceModal } from "../molecules/form/newServiceForm";
 import { PostClientModal } from "../molecules/form/newClientForm"; // Importa el modal para los clientes
-import BroadcastOnHomeIcon from "@mui/icons-material/BroadcastOnHome";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+
 import Button from "@mui/joy/Button";
 import { useStore } from "@/store/store"; // Ajusta la ruta de importación según sea necesario
 import {
@@ -89,7 +90,7 @@ const ContainerS: React.FC<IResponse<IServices | IClients>> = ({
           size="lg"
           variant="outlined"
         >
-          <BroadcastOnHomeIcon className="text-[1.4em] mr-2" />
+          <AddCircleIcon className="text-[1.4em] mr-2" />
           Add {itemType === "service" ? "Service" : "Client"}
         </Button>
 

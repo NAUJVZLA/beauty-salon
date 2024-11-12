@@ -18,6 +18,7 @@ import MoreIcon from "@mui/icons-material/MoreVert";
 import ButtonOpenMenuNav from "@/ui/template/navbar/button";
 import { signOut } from "next-auth/react";
 import { useStore } from "@/store/store";
+import Link from "next/link";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -182,7 +183,7 @@ export default function PrimarySearchAppBar() {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            BEAUTY SALON
+            <Link href="/dashboard/services">BEAUTY SALON</Link>N
           </Typography>
           <Search>
             <SearchIconWrapper>

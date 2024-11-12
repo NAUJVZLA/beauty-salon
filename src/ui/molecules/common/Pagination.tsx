@@ -5,6 +5,8 @@ import { StepBack, StepForward } from "lucide-react";
 import { useStore } from "@/store/store"; // Ajusta la ruta según tu estructura
 import { IServices } from "@/app/core/application/dto/services/services-response.dto";
 import { IClients } from "@/app/core/application/dto/clients/clients-response.dto";
+import LastPageIcon from "@mui/icons-material/LastPage";
+import FirstPageIcon from "@mui/icons-material/FirstPage";
 
 interface IProps {
   data: IServices | IClients;
@@ -42,9 +44,9 @@ function Pagination({ data }: IProps) {
         disabled={currentPage === 1}
         className={`${buttonStyles} ${
           currentPage === 1 && disabledButtonStyles
-        }`}
+        }hover:scale-105 hover:z-10`}
       >
-        <StepBack />
+        <FirstPageIcon />
       </button>
       <span>Page</span>
       <span> {currentPage}</span>
@@ -55,9 +57,9 @@ function Pagination({ data }: IProps) {
         disabled={currentPage === totalPages}
         className={`${buttonStyles} ${
           currentPage === totalPages && disabledButtonStyles
-        }`}
+        }hover:scale-605 hover:z-10 `}
       >
-        <StepForward />
+        <LastPageIcon />
       </button>
     </div>
   );
