@@ -1,49 +1,36 @@
+import { ServicesService } from "@/app/infrastucture/services/service.service";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/ui/molecules/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/ui/tabs";
-import Button from "@mui/material/Button/Button";
-import Image from "next/image";
-import Link from "next/link";
+import TemplateService from "@/ui/template/templateService";
 
-export default function Servicios() {
-  const servicios = [
-    {
-      nombre: "Cortes de Cabello",
-      imagen: "/placeholder.svg",
-      enlace: "/cortes-de-cabello",
-    },
-    {
-      nombre: "Arreglo de Barba",
-      imagen: "/placeholder.svg",
-      enlace: "/arreglo-de-barba",
-    },
-    {
-      nombre: "Servicios de Afeitado",
-      imagen: "/placeholder.svg",
-      enlace: "/servicios-de-afeitado",
-    },
-    {
-      nombre: "Tratamientos para el Cabello",
-      imagen: "/placeholder.svg",
-      enlace: "/tratamientos-para-el-cabello",
-    },
-    {
-      nombre: "Coloración y Decoloración",
-      imagen: "/placeholder.svg",
-      enlace: "/coloracion-y-decoloracion",
-    },
-    {
-      nombre: "Manicure y Pedicure",
-      imagen: "/placeholder.svg",
-      enlace: "/manicure-y-pedicure",
-    },
-  ];
+const useServicesService = new ServicesService();
+
+interface IProps {
+  searchParams: {
+    page: string;
+    size: string;
+    name: string;
+  };
+}
+
+export const generateMetadata = async ({ searchParams }: IProps) => {
+  const page = searchParams.page ?? "1";
+  return {
+    title: `Services - Página ${page}`,
+    description: "Service of beauty-salon",
+  };
+};
+
+export default async function ServicesPage({ searchParams }: IProps) {
+  const page = searchParams.page ? parseInt(searchParams.page) : 1;
+  const size = searchParams.size ? parseInt(searchParams.size) : 9;
+  const data = await useServicesService.findAll(page, size);
 
   const cortesDeModa = [
     {
@@ -85,36 +72,13 @@ export default function Servicios() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <TemplateService data={data} title="Services" />
       <h1 className="text-4xl font-bold text-center mb-12">
         Nuestros Servicios
       </h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-        {servicios.map((servicio, index) => (
-          <Link href={servicio.enlace} key={index}>
-            <Card className="transition-all duration-300 hover:scale-105 hover:shadow-lg">
-              <CardHeader>
-                <CardTitle>{servicio.nombre}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Image
-                  src={servicio.imagen}
-                  alt={servicio.nombre}
-                  width={300}
-                  height={200}
-                  className="rounded-md object-cover w-full h-48"
-                />
-              </CardContent>
-              <CardFooter>
-                <Button className="w-full">Ver más</Button>
-              </CardFooter>
-            </Card>
-          </Link>
-        ))}
-      </div>
-
       <Tabs defaultValue="moda" className="mb-16">
         <TabsList className="grid w-full grid-cols-2">
+          searchParams
           <TabsTrigger value="moda">Cortes de Moda</TabsTrigger>
           <TabsTrigger value="tips">Tips según Ocasión</TabsTrigger>
         </TabsList>

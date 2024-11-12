@@ -4,7 +4,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   type?: string;
   name?: string;
-  error?: boolean;
+  error?: string;
 }
 export const Input = ({
   placeholder,
