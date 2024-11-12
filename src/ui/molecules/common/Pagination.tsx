@@ -3,8 +3,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { StepBack, StepForward } from "lucide-react";
 import { useStore } from "@/store/store"; // Ajusta la ruta según tu estructura
-import { IServices } from "@/app/(main)/core/application/dto/services/services-response.dto";
-import { IClients } from "@/app/(main)/core/application/dto/clients/clients-response.dto";
+import { IServices } from "@/app/core/application/dto/services/services-response.dto";
+import { IClients } from "@/app/core/application/dto/clients/clients-response.dto";
 
 interface IProps {
   data: IServices | IClients;

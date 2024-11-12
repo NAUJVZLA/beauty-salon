@@ -7,7 +7,7 @@ import * as yup from "yup";
 import BroadcastOnHomeIcon from "@mui/icons-material/BroadcastOnHome";
 import Input from "@mui/joy/Input";
 import Textarea from "@mui/joy/Textarea";
-import { IPostService } from "@/app/(main)/core/application/dto/services/services-response.dto";
+import { IPostService } from "@/app/core/application/dto/services/services-response.dto";
 import Button from "@mui/joy/Button";
 
 const postServiceSchema = yup.object().shape({

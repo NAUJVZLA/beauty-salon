@@ -2,8 +2,8 @@ import { Edit, Scissors, Trash2 } from "lucide-react";
 import FactCheckIcon from "@mui/icons-material/FactCheck";
 import Button from "@mui/joy/Button";
 import { useStore } from "@/store/store";
-import { IResponseClient } from "@/app/(main)/core/application/dto/clients/clients-response.dto";
-import { IResponseService } from "@/app/(main)/core/application/dto/services/services-response.dto";
+import { IResponseClient } from "@/app/core/application/dto/clients/clients-response.dto";
+import { IResponseService } from "@/app/core/application/dto/services/services-response.dto";
 
 interface CardProps {
   data: IResponseClient | IResponseService;

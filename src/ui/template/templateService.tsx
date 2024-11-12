@@ -10,12 +10,12 @@ import ContainerS from "../organisms/ContainerServices";
 import {
   IPostService,
   IServices,
-} from "@/app/(main)/core/application/dto/services/services-response.dto";
+} from "@/app/core/application/dto/services/services-response.dto";
 import { ClientsService } from "@/app/infrastucture/services/client.service";
 import {
   IClients,
   IPostClient,
-} from "@/app/(main)/core/application/dto/clients/clients-response.dto";
+} from "@/app/core/application/dto/clients/clients-response.dto";
 import { ServicesService } from "@/app/infrastucture/services/service.service";
 
 export interface Data {

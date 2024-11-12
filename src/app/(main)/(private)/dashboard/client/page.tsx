@@ -1,4 +1,5 @@
-import { ServicesService } from "@/app/infrastucture/services/service.service";
+
+import { ClientsService } from "@/app/infrastucture/services/client.service";
 import {
   Card,
   CardContent,
@@ -9,7 +10,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/ui/tabs";
 import TemplateService from "@/ui/template/templateService";
 
-const useServicesService = new ServicesService();
+const useServicesService = new ClientsService();
 
 interface IProps {
   searchParams: {

@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-import { ILoginRequest } from "@/app/(main)/core/application/dto/auth/login-request.dto";
+import { ILoginRequest } from "@/app/core/application/dto/auth/login-request.dto";
 import { FormField } from "@/ui/molecules";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -49,7 +49,7 @@ export const LoginForm = () => {
         handleError(JSON.parse(result.error));
         return;
       }
-      router.push("/dashboard");
+      router.push("/dashboard/services");
     } catch (error) {
       console.log(error);
     }

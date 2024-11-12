@@ -1,5 +1,5 @@
-import { ILoginRequest } from "@/app/(main)/core/application/dto";
-import { AuthService } from "@/app/infrastucture/auth.services";
+import { ILoginRequest } from "@/app/core/application/dto";
+import { AuthService } from "@/app/infrastucture/services/auth.service";
 import NextAuth, { NextAuthOptions, Session } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
