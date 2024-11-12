@@ -16,6 +16,8 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import ButtonOpenMenuNav from "@/ui/template/navbar/button";
+import { signOut } from "next-auth/react";
+import { useStore } from "@/store/store";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -60,6 +62,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const handleLogout = () => {
+    signOut();
+  };
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -102,7 +108,12 @@ export default function PrimarySearchAppBar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        {" "}
+        <button onClick={handleLogout} className="flex">
+          Logout
+        </button>
+      </MenuItem>
     </Menu>
   );
 

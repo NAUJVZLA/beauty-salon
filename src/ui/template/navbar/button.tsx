@@ -25,7 +25,11 @@ import { useRouter } from "next/navigation";
 const drawerWidth = 240;
 
 const MenuNavH = [
-  { text: "Cortes de Cabello", icon: <ScissorsIcon />, route: "/services/cortes-cabello" },
+  {
+    text: "Cortes de Cabello",
+    icon: <ScissorsIcon />,
+    route: "/dashboard/services",
+  },
   {
     text: "Arreglo de Barba",
     icon: <EmojiEmotionsSharpIcon />,
@@ -40,9 +44,9 @@ const MenuNavH = [
 
 const MenuNavM = [
   {
-    text: "Tratamientos para el Cabello",
+    text: "Services",
     icon: <Face2Icon />,
-    route: "/services/tratamiento-cabellos",
+    route: "/services",
   },
   {
     text: "Coloración y Decoloración",
@@ -50,9 +54,9 @@ const MenuNavM = [
     route: "/services/decoracion-color",
   },
   {
-    text: "Manicure y Pedicure",
+    text: "Clients",
     icon: <AirlineSeatReclineNormalIcon />,
-    route: "/services/pedicure",
+    route: "/dashboard/client",
   },
 ];
 

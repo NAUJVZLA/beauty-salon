@@ -9,9 +9,9 @@ export default function PrivateLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      <PrimarySearchAppBar />
+    <div>
       <AuthGuard>
+        <PrimarySearchAppBar />
         {children}
         <ToastContainer />
       </AuthGuard>
